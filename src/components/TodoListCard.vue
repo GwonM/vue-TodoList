@@ -1,5 +1,12 @@
 <template>
-    <v-card height="280" min-width="250" max-width="160" :style="{ border: '1px solid lightgray', cursor: 'pointer' }" @click="MoveTodoPage">
+    <v-card
+        height="280"
+        min-width="250"
+        max-width="160"
+        :style="{ border: '1px solid lightgray', cursor: 'pointer' }"
+        @click="MoveTodoPage"
+        class="d-flex flex-column"
+    >
         <v-card-title>
             <v-row>
                 <v-col cols="9">
@@ -33,6 +40,12 @@
                 </v-col>
             </v-row>
         </v-card-title>
+        <v-spacer></v-spacer>
+        <v-card-actions>
+            <v-progress-linear color="primary" :value="knowledge" height="25">
+                <strong>{{ knowledge }}%</strong>
+            </v-progress-linear>
+        </v-card-actions>
     </v-card>
 </template>
 <script>
@@ -51,6 +64,9 @@ export default {
         },
         index: {
             type: Number,
+        },
+        knowledge: {
+            type: String,
         },
     },
     data() {

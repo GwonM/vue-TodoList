@@ -9,6 +9,7 @@
                     :description="item.description"
                     :id="item.id"
                     :index="index"
+                    :knowledge="test(index)"
                 />
                 <div class="dialog-button">
                     <TodoEditDialog :mode="'Create'" />
@@ -27,7 +28,17 @@ export default {
     data: () => ({
         TodoList: [],
     }),
-    methods: {},
+    methods: {
+        test(index) {
+            let TotalCnt = this.$store.state.TodoList[index].todos.length;
+            let CheckCnt = this.$store.state.TodoList[index].todos.filter((q) => q.check === true);
+
+            console.log(CheckCnt.length);
+            let percent = (CheckCnt.length / TotalCnt) * 100;
+            if (isNaN(percent)) return "0";
+            return percent.toFixed(1);
+        },
+    },
 };
 </script>
 
