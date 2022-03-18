@@ -31,6 +31,7 @@
         </v-card>
     </v-dialog>
 </template>
+
 <script>
 import NewId from "../module/NewId";
 export default {
@@ -77,7 +78,6 @@ export default {
         setFocusName() {
             this.$refs.title.focus();
         },
-
         openDialog() {
             this.title = this.baseTitle;
             this.description = this.baseDescription;
@@ -89,4 +89,3 @@ export default {
     },
 };
 </script>
-<style lang=""></style>

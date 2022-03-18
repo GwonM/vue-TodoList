@@ -10,7 +10,7 @@
                     transition="scale-transition"
                     width="40"
                 />
-                TODO
+                <span class="text-h4">TODO</span>
             </div>
         </v-app-bar>
 
@@ -23,18 +23,9 @@
 <script>
 export default {
     name: "App",
-
-    components: {},
-
-    data: () => ({
-        //
-    }),
     methods: {
         ClickHandler() {
-            if (this.$route.path !== "/")
-                this.$router.push("/").catch(() => {
-                    // alert("잘못된접근입니다.");
-                });
+            if (this.$route.path !== "/") this.$router.push("/").catch(() => {});
         },
     },
 };

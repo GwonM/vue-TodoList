@@ -24,11 +24,14 @@ router.beforeEach(function (to, from, next) {
     // to : 이동할 url
     // from : 현재 url
     // next : to에서 지정한 url로 이동하기 위해 꼭 호출해야 하는 함수
+
+    // 미 로그인시 로그린 페이지로 이동
     if (to.fullPath === "/") {
         if (localStorage.getItem("isLogin") === "false" || localStorage.getItem("isLogin") === null) {
             next("/login");
         } else next();
     } else if (to.fullPath === "/login") {
+        // 로그인 시 로그인 페이지 이동 Block
         if (localStorage.getItem("isLogin") === "true") {
             next("/");
         } else next();

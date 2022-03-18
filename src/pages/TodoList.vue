@@ -3,13 +3,12 @@
         <v-layout>
             <v-flex row class="ma-2 align-center" :style="{ gap: '15px' }">
                 <TodoCard
-                    v-for="(item, index) in this.$store.state.TodoList"
+                    v-for="(todo, index) in this.$store.state.TodoList"
                     :key="index"
-                    :title="item.title"
-                    :description="item.description"
-                    :id="item.id"
+                    :todoInfo="todo"
                     :index="index"
-                    :knowledge="test(index)"
+                    :check="checkCnt(index)"
+                    :todoCount="totalCnt(index)"
                 />
                 <div class="dialog-button">
                     <TodoEditDialog :mode="'Create'" />
@@ -25,18 +24,12 @@ import TodoEditDialog from "../components/TodoEditDialog.vue";
 export default {
     name: "TodoList",
     components: { TodoCard, TodoEditDialog },
-    data: () => ({
-        TodoList: [],
-    }),
     methods: {
-        test(index) {
-            let TotalCnt = this.$store.state.TodoList[index].todos.length;
-            let CheckCnt = this.$store.state.TodoList[index].todos.filter((q) => q.check === true);
-
-            console.log(CheckCnt.length);
-            let percent = (CheckCnt.length / TotalCnt) * 100;
-            if (isNaN(percent)) return "0";
-            return percent.toFixed(1);
+        totalCnt(index) {
+            return this.$store.state.TodoList[index].todos.length;
+        },
+        checkCnt(index) {
+            return this.$store.state.TodoList[index].todos.filter((q) => q.check === true).length;
         },
     },
 };

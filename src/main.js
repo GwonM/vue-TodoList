@@ -6,8 +6,6 @@ import { store } from "./store/store";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
-
-// Vue.prototype.$EventBus = new Vue();
 Vue.config.productionTip = false;
 
 new Vue({

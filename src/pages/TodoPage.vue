@@ -7,7 +7,7 @@
                 <v-card-text>
                     <v-row>
                         <v-col cols="10">
-                            <v-text-field ref="myTextArea" v-model="Todo" counter maxlength="40" label="Todo" @keypress.enter="AddTodo" />
+                            <v-text-field ref="myTextArea" v-model="Todo" counter maxlength="20" label="Todo" @keypress.enter="AddTodo" />
                         </v-col>
                         <v-col cols="2">
                             <v-btn class="mt-3" color="primary" @click="AddTodo"> add </v-btn>
@@ -38,6 +38,7 @@
         </v-layout>
     </v-container>
 </template>
+
 <script>
 import NewId from "../module/NewId";
 export default {
@@ -61,8 +62,8 @@ export default {
                 alert("Todo를 입력해주세요");
             }
         },
-        DeleteTodo(delId) {
-            this.todos = this.todos.filter((q) => q.id !== delId);
+        DeleteTodo(deleteTodoId) {
+            this.todos = this.todos.filter((q) => q.id !== deleteTodoId);
             this.UpdataTodo();
         },
         UpdataTodo() {
